@@ -22,6 +22,7 @@
 
 package lavalink.server;
 
+import com.github.shredder121.asyncaudio.jdaaudio.AsyncPacketProviderFactory;
 import lavalink.server.io.SocketServer;
 import lavalink.server.nas.NativeAudioSendFactory;
 import net.dv8tion.jda.audio.AudioConnection;
@@ -67,7 +68,9 @@ public class Launcher {
                 && !System.getProperty("os.arch").equalsIgnoreCase("arm")
                 && !System.getProperty("os.arch").equalsIgnoreCase("arm-linux")
                 ) {
-            AudioConnection.setAudioSendFactory(new NativeAudioSendFactory());
+            AudioConnection.setAudioSendFactory(
+                    AsyncPacketProviderFactory.adapt(new NativeAudioSendFactory())
+            );
             log.info("JDA-NAS supported system detected. Enabled native audio sending.");
         } else {
             log.warn("This system and architecture appears to not support native audio sending! "

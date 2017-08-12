@@ -89,6 +89,11 @@
             <artifactId>lavaplayer-common</artifactId>
             <version>1.0.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.shredder121</groupId>
+            <artifactId>jda-async-packetprovider</artifactId>
+            <version>1.0</version>
+        </dependency>
 
 
         <!-- Spring for dependency injection -->
